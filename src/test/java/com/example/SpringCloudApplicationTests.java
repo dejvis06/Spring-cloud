@@ -16,18 +16,18 @@ class SpringCloudApplicationTests {
 
     @Test
     void contextLoads() {
-        // userRepository.save(User.builder().username("dejvis06").build());
+        userRepository.save(User.builder().username("dejvis06").build());
 
-        User user = userRepository.findByUsername("dejvis07");
+        User user = userRepository.findByUsername("dejvis06");
         System.err.println(user.toString());
 
-        Optional<User> optionalUser = userRepository.findById("620abc629a0a901c91f6bcd4");
+        Optional<User> optionalUser = userRepository.findById(user.getId().toHexString());
         System.err.println(optionalUser.get().toString());
 
         user.setUsername("dejvis07");
         userRepository.save(user);
 
-        userRepository.deleteById("620abc629a0a901c91f6bcd4");
+        userRepository.deleteById(user.getId().toHexString());
     }
 
 }
